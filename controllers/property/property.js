@@ -15,7 +15,7 @@ const moment = require("moment");
 const quotes = require("../../model/schema/quotes");
 
 const index = async (req, res) => {
-  const query = await applyRecordScope(req);
+  const query = await applyRecordScope(req, "Properties");
   query.deleted = false;
   let allData = await Property.find(query)
     .populate({

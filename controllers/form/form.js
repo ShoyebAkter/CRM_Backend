@@ -37,7 +37,7 @@ const index = async (req, res) => {
         }
 
         // Admin sees everything; other users only the records they created (see utils/applyRecordScope.js)
-        const scope = await applyRecordScope(req);
+        const scope = await applyRecordScope(req, collectionName);
         const filter = { deleted: false };
         if (scope.createBy) filter.createBy = scope.createBy;
         const allData = await ExistingModel.find(filter);
@@ -77,7 +77,7 @@ const view = async (req, res) => {
 
         let allData = await ExistingModel.findOne({ _id: req.params.id });
 
-        const scope = await applyRecordScope(req);
+        const scope = await applyRecordScope(req, collectionName);
         if (allData && scope.createBy && String(allData.createBy) !== String(scope.createBy)) {
             return res.status(403).json({ success: false, message: "You do not have access to this record." });
         }

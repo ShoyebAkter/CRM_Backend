@@ -351,12 +351,12 @@ const leadFields = [
         value: "Apartment",
       },
       {
-        name: "Land",
-        value: "Land",
+        name: "Shop",
+        value: "Shop",
       },
       {
-        name: "Manssonnate",
-        value: "Manssonnate",
+        name: "Hospital Share",
+        value: "Hospital Share",
       },
     ],
     validation: [
